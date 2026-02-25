@@ -7,6 +7,7 @@ const Breadcrumb = () => {
   const pathnames = location?.pathname?.split('/')?.filter((x) => x);
 
   const breadcrumbNameMap = {
+    'Home':'Home',
     'patient-dashboard': 'Dashboard',
     'doctor-selection': 'Find Doctors',
     'appointment-booking': 'Book Appointment',
@@ -19,14 +20,14 @@ const Breadcrumb = () => {
     return breadcrumbNameMap?.[pathname] || pathname?.replace(/-/g, ' ')?.replace(/\b\w/g, (l) => l?.toUpperCase());
   };
 
-  if (pathnames?.length === 0 || pathnames?.[0] === 'patient-dashboard') {
+  if (pathnames?.length === 0 || pathnames?.[0] === 'Home') {
     return null;
   }
 
   return (
     <nav className="flex items-center space-x-8 py-16 px-16 bg-background" aria-label="Breadcrumb">
       <Link
-        to="/patient-dashboard"
+        to="/"
         className="flex items-center text-muted-foreground hover:text-foreground transition-smooth"
       >
         <Icon name="Home" size={16} color="currentColor" strokeWidth={2} />

@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { Link, useLocation,useNavigate } from 'react-router-dom';
 import Icon from '../AppIcon';
 import Button from './Button';
 
 const Header = () => {
   const location = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
   const navigationItems = [
+    {
+      label: 'Home',
+      path: '/  ',
+      icon: 'Home',
+      requiresAuth: true
+    },
     {
       label: 'Dashboard',
       path: '/patient-dashboard',
@@ -42,12 +50,27 @@ const Header = () => {
     setMobileMenuOpen(!mobileMenuOpen);
   };
 
+  useEffect(() => {
+    const status = localStorage.getItem("isLoggedIn");
+    setIsLoggedIn(status === "true");
+  }, []);
+
+  const handleClick = () => {
+    if (isLoggedIn) {
+      localStorage.removeItem("isLoggedIn");
+      setIsLoggedIn(false);
+      alert("Logged out successfully");
+    } else {
+      navigate("/patient-login");
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-navigation bg-card shadow-elevation-2 transition-smooth">
       <div className="mx-auto px-16">
         <div className="flex items-center justify-between h-64">
           <Link 
-            to="/patient-dashboard" 
+            to="/" 
             className="flex items-center space-x-12 transition-smooth hover:opacity-80"
           >
             <div className="flex items-center justify-center w-48 h-48 bg-primary/10 rounded-lg transition-smooth">
@@ -93,10 +116,11 @@ const Header = () => {
             <Button
               variant="outline"
               size="default"
-              iconName="LogOut"
+              iconName=""
               iconPosition="left"
+              onClick={handleClick}
             >
-              Logout
+              {isLoggedIn ? "Logout" : "Login"}
             </Button>
           </div>
 
@@ -150,11 +174,12 @@ const Header = () => {
               <Button
                 variant="outline"
                 size="default"
-                iconName="LogOut"
+                iconName=""
                 iconPosition="left"
                 fullWidth
+                onClick={handleClick}
               >
-                Logout
+                {isLoggedIn ? "Logout" : "Login"}
               </Button>
             </div>
           </nav>

@@ -9,6 +9,7 @@ import AppointmentBooking from './pages/appointment-booking';
 import PatientDashboard from './pages/patient-dashboard';
 import DoctorSelection from './pages/doctor-selection';
 import PatientLogin from './pages/patient-login';
+import Home from './pages/Home';
 
 const Routes = () => {
   return (
@@ -17,7 +18,8 @@ const Routes = () => {
       <ScrollToTop />
       <RouterRoutes>
         {/* Define your route here */}
-        <Route path="/" element={<PatientLogin />} />
+       
+        <Route path="/" element={<Home />} />
         <Route path="/patient-registration" element={<PatientRegistration />} />
         <Route path="/medical-records" element={<MedicalRecords />} />
         <Route path="/appointment-booking" element={<AppointmentBooking />} />

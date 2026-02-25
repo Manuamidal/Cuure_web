@@ -118,7 +118,7 @@ const PatientLogin = () => {
 
             <SecurityBadges />
 
-            <AccessibilityOptions />
+            
 
             <div className="pt-16 border-t border-border">
               <p className="text-xs text-center text-muted-foreground caption">

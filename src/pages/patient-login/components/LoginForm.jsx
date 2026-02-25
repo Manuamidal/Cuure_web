@@ -110,19 +110,7 @@ const LoginForm = () => {
           required
           disabled={isLoading}
         />
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-12 top-[38px] p-8 text-muted-foreground hover:text-foreground transition-smooth"
-          aria-label={showPassword ? 'Hide password' : 'Show password'}
-        >
-          <Icon 
-            name={showPassword ? 'EyeOff' : 'Eye'} 
-            size={20} 
-            color="currentColor" 
-            strokeWidth={2} 
-          />
-        </button>
+        
       </div>
       <div className="flex items-center justify-between">
         <Checkbox
@@ -133,7 +121,7 @@ const LoginForm = () => {
         />
         <button
           type="button"
-          onClick={() => navigate('/patient-registration')}
+          onClick={() => navigate('/')}
           className="text-sm text-primary hover:text-primary/80 transition-smooth font-medium"
         >
           Forgot Password?
