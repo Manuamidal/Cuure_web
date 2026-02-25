@@ -13,31 +13,26 @@ const Header = () => {
     {
       label: 'Home',
       path: '/  ',
-      icon: 'Home',
       requiresAuth: true
     },
     {
       label: 'Dashboard',
       path: '/patient-dashboard',
-      icon: 'LayoutDashboard',
       requiresAuth: true
     },
     {
       label: 'Find Doctors',
       path: '/doctor-selection',
-      icon: 'Stethoscope',
       requiresAuth: true
     },
     {
       label: 'Appointments',
       path: '/appointment-booking',
-      icon: 'Calendar',
       requiresAuth: true
     },
     {
       label: 'My Records',
       path: '/medical-records',
-      icon: 'FileText',
       requiresAuth: true
     }
   ];
@@ -80,47 +75,34 @@ const Header = () => {
               HealthCare Connect
             </span>
           </Link>
-
-          <nav className="hidden lg:flex items-center space-x-6">
-            {navigationItems?.map((item) => (
-              <Link
-                key={item?.path}
-                to={item?.path}
-                className={`flex items-center space-x-8 px-16 py-12 rounded-lg transition-smooth hover-lift press-scale ${
-                  isActivePath(item?.path)
-                    ? 'bg-primary text-primary-foreground shadow-elevation-1'
-                    : 'text-foreground hover:bg-muted'
-                }`}
-              >
-                <Icon 
-                  name={item?.icon} 
-                  size={20} 
-                  color={isActivePath(item?.path) ? 'var(--color-primary-foreground)' : 'currentColor'} 
-                  strokeWidth={2} 
-                />
-                <span className="font-medium">{item?.label}</span>
-              </Link>
-            ))}
-          </nav>
-
           <div className="hidden lg:flex items-center space-x-12">
+            <nav className="hidden lg:flex items-center space-x-6">
+              {navigationItems?.map((item) => (
+                <Link
+                  key={item?.path}
+                  to={item?.path}
+                  className={`flex items-center space-x-8 px-16 py-12 rounded-lg transition-smooth hover-lift press-scale ${
+                    isActivePath(item?.path)
+                      ? 'bg-light text-light-foreground shadow-elevation-1'
+                      : 'text-foreground hover:bg-muted'
+                  }`}
+                >
+                  
+                  <span className="font-medium">{item?.label}</span>
+                </Link>
+              ))}
+            </nav>
+
+         
+        
             <Button
-              variant="ghost"
-              size="default"
-              iconName="Bell"
-              iconPosition="left"
-              className="relative"
-            >
-              Notifications
-            </Button>
-            <Button
-              variant="outline"
+              variant="default"
               size="default"
               iconName=""
               iconPosition="left"
               onClick={handleClick}
             >
-              {isLoggedIn ? "Logout" : "Login"}
+              {isLoggedIn ? "Profile" : "Login"}
             </Button>
           </div>
 
@@ -152,34 +134,21 @@ const Header = () => {
                     : 'text-foreground hover:bg-muted'
                 }`}
               >
-                <Icon 
-                  name={item?.icon} 
-                  size={20} 
-                  color={isActivePath(item?.path) ? 'var(--color-primary-foreground)' : 'currentColor'} 
-                  strokeWidth={2} 
-                />
+                
                 <span className="font-medium">{item?.label}</span>
               </Link>
             ))}
             <div className="pt-12 border-t border-border space-y-6">
+            
               <Button
-                variant="ghost"
-                size="default"
-                iconName="Bell"
-                iconPosition="left"
-                fullWidth
-              >
-                Notifications
-              </Button>
-              <Button
-                variant="outline"
+                variant="default"
                 size="default"
                 iconName=""
                 iconPosition="left"
                 fullWidth
                 onClick={handleClick}
               >
-                {isLoggedIn ? "Logout" : "Login"}
+                {isLoggedIn ? "Profile" : "Login"}
               </Button>
             </div>
           </nav>
